@@ -19,7 +19,9 @@
     <input type="email" name="email" id="email"><br>
     <input type="submit" value="Register">
 </form>
-<?php endif;?>
+<?php endif;
+require_once __DIR__.'/../footer.php';
+?>
 </body>
 </html>
 

@@ -21,7 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id']) && isset($_SESSIO
         <input type="email" name="email" id="email" value="<?php echo htmlentities($_SESSION['user']['email']);?>"><br>
         <input type="submit" value="Update">
     </form>
-<?php endif;?>
+<?php endif;
+require_once __DIR__.'/../footer.php';
+
+?>
 </body>
 </html>
 

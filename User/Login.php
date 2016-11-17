@@ -29,7 +29,9 @@ if(isset($_GET['action']) && $_GET['action']==='logout' && isset($_SESSION['user
     <?php }
     if(isset($_SESSION['user'])){
     header("Location: Show.php");
-}?>
+}
+require_once __DIR__.'/../footer.php';
+?>
 </body>
 </html>
 <?php
@@ -55,8 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo 'something went wrong ..... redirection to Login page';
             header("refresh:3;url=Login.php");
         }
-
-
 
     }else{
         echo 'You have not filled out the fileds correctly';

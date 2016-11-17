@@ -1,12 +1,12 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: honey
- * Date: 14/11/16
- * Time: 10:25 PM
- */
-class Category
+class Category extends DB
 {
-
+    public function reachedMaximum()
+    {
+        $query='SELECT COUNT(*) as total  FROM `categories`';
+        $run=$this->connection->query($query);
+        $total=$run->fetch_assoc()['total'];
+        return ($total==3);
+    }
 }

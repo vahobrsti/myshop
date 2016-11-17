@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../config.php';
 class DB
 {
-    private $connection;
+    protected $connection;
     public $error;
 
     public function __construct($dbUser=DBUSER,$dbhost=DBHOST,$dbpass=DBPASS,$dbname=DBNAME)
@@ -16,20 +16,22 @@ class DB
         return $this->connection;
     }
     public function sanitize($input){
-        $currentCon=$this->connection;
-        return $this->connection->real_escape_string($currentCon,$input);
+        return $this->connection->real_escape_string($input);
     }
 
     public function readQuery($query){
         $result=array();
         $runResult=$this->connection->query($query);
-        if(! $result){
+        if(!$runResult){
             $this->error=$this->connection->error;
             $this->closeConnection();
             return false;
         }
         while ($row=$runResult->fetch_assoc()){
             $result[]=$row;
+        }
+        if(count($result)==1){
+            return array_shift($result);
         }
         return $result;
 

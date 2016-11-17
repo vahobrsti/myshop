@@ -5,7 +5,7 @@ require_once __DIR__.'/../config.php';
 if(isset($_GET['action']) && $_GET['action']==='logout' && isset($_SESSION['user'])){
     unset($_SESSION['user']);
     echo 'You have successfully logged out';
-    header("refresh:3;url=" . HOST . "Login.php");
+    header("refresh:3;url=Login.php");
     exit();
 }
 ?>
@@ -26,15 +26,16 @@ if(isset($_GET['action']) && $_GET['action']==='logout' && isset($_SESSION['user
     <input type="submit" value="Login">
 </form>
     <p> if you dont have a user, please click <a href="Create.php">here</a> for registeration</p>
-    <?php }else{
-    header("Location: " . HOST . "/User/Show.php");
+    <?php }
+    if(isset($_SESSION['user'])){
+    header("Location: Show.php");
 }?>
 </body>
 </html>
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //var_dump($_POST);
+    //var_dump($_POST);die();
     if(trim($_POST['user_name'])!==''){
         $user=new User();
         $user_name=$user->sanitize($_POST['user_name']);
@@ -50,12 +51,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo 'You have successfully logged in.Now you will redirect to your home page.';
             header("refresh:3;url=Show.php");
 
+        }else{
+            echo 'something went wrong ..... redirection to Login page';
+            header("refresh:3;url=Login.php");
         }
+
 
 
     }else{
         echo 'You have not filled out the fileds correctly';
-        header("refresh:3;url=" . HOST . "User/Login.php");
+        header("refresh:3;url=Login.php");
     }
 }
 ?>

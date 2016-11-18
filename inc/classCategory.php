@@ -7,6 +7,6 @@ class Category extends DB
         $query='SELECT COUNT(*) as total  FROM `categories`';
         $run=$this->connection->query($query);
         $total=$run->fetch_assoc()['total'];
-        return ($total==3);
+        return ($total>=3);
     }
 }

@@ -10,7 +10,9 @@ if(isset($_SESSION['user'])){
 }else{
     header("Location: Login.php");
 }
+?>
+<p>To update your details click the following link</p> <a href="/User/Update.php?id=<?php echo $userLoggedIn['id']?>">Update</a>
+<?php
 require_once __DIR__.'/../footer.php';
 
 ?>
-<p>To update your details click the following link</p> <a href="/User/Update.php?id=<?php echo $userLoggedIn['id']?>">Update</a>

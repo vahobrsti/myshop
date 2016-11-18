@@ -7,6 +7,7 @@ session_start();
  * Time: 9:01 PM
  */
 if(isset($_SESSION['user'])){?>
-<a href="/User/Login.php?action=logout">Log out</a><br>
+    <p> Hi dear <?php echo $_SESSION['user']['name'] ?></p>
+    <a href="/User/Login.php?action=logout">Log out</a><br>
 <?php }?>
 

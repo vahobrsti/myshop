@@ -22,7 +22,7 @@ if((isset($_SESSION['user']) && $_SESSION['user']['role']!=='admin') || (!isset(
     header("refresh:3;url=/User/Login.php");
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['user']['role']==='admin') {
-$cat=new Category();
+    $cat=new Category();
 
     if(! $cat->reachedMaximum()){
         $name=$cat->sanitize($_POST['name']);
@@ -30,8 +30,7 @@ $cat=new Category();
         if(! $cat->insertQuery($query)){
             echo $cat->error;
             exit();
-        }
-        if($cat->insertQuery($query)  ==1){
+        } else{
             echo 'You have created your cat successfully.';
             header("refresh:3;url=/Category/Show.php");
         }

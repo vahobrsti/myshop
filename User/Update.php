@@ -10,7 +10,7 @@ require_once __DIR__.'/../config.php'; ?>
 </head>
 <body>
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id']) && isset($_SESSION['user'])):?>
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_SESSION['user'])):?>
     <form action="Update.php" method="post">
         <label for="name">Name: </label>
         <input type="text" name="name" id="name" value="<?php echo htmlentities($_SESSION['user']['name']);?>"><br>

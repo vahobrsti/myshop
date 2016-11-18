@@ -26,6 +26,7 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role']==='admin' && $_SERVER['
     <input type="submit" value="Update">
 </form>
 <a href="/Category/Show.php" style="display: block;color: #4cae4c">Back to Previous page</a>
+<?php require_once __DIR__.'/../footer.php'?>
 </body>
 </html>
 <?php }

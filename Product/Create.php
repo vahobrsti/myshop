@@ -55,7 +55,7 @@ if(! isset($_SESSION['user']))
     header("Location: /User/Login.php");
 }
 if(isset($_SESSION['user']) && $_SESSION['user']['role']!='admin'){
-    echo 'You dont have access to this page.';
+    echo '<b>You dont have access to this page.</b>';
 }
 //create the product
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['user']['role']==='admin') {

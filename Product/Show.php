@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id']) ){
     echo '<p>Stock Number: '.htmlentities($product['stock']).'</p>';
     echo '<p>Weight: '.htmlentities($product['weight']).'</p>';
     echo 'Description: '.htmlentities($product['description']);
-    if(isset($_SESSION['user']) && $_SESSION['user']['role']='admin'):?>
+    if(isset($_SESSION['user']) && $_SESSION['user']['role']==='admin'):?>
         <br><a href="<?php  echo 'Update.php?action=update&id='.$product['id'] ?>">Edit this product</a><br>
         <a style="color: red;" href="<?php  echo 'Update.php?action=delete&id='.$product['id'] ?>" onclick="return confirm('Are You sure to delete this?')"><b>Delete</b></a><br>
 

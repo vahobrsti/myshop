@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__.'/../header.php';
 require_once __DIR__.'/../config.php';
-if(isset($_SESSION['user']) && $_SESSION['user']['role']='admin') {
+if(isset($_SESSION['user']) && $_SESSION['user']['role']==='admin') {
     $productModel = new Product();
     $product_id = $productModel->sanitize($_GET['id']);
     $query = "SELECT * FROM `products` WHERE `id`=" . $product_id;
@@ -17,7 +17,7 @@ if(! $catModel->checkForThree($allCats)){
     echo 'Not enough categories. Must be three';
     exit();
 }
-if(isset($_SESSION['user']) && $_SESSION['user']['role']='admin' && $_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id']) && isset($_GET['action'])){
+if(isset($_SESSION['user']) && $_SESSION['user']['role']==='admin' && $_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id']) && isset($_GET['action'])){
     $action=$_GET['action'];
     switch ($action){
         case 'update':
@@ -57,7 +57,18 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role']='admin' && $_SERVER['RE
 
             break;
         case 'delete':
-            echo 'delete';
+            $query="DELETE FROM `products` WHERE `id`=".$product_id;
+            if (! $productModel->updateQuery($query)){
+                echo $productModel->error;
+            }else{
+                if(file_exists(__DIR__.'/../Public/Uploads/'.$product['image']))
+                {
+                    unlink(__DIR__ . '/../Public/Uploads/' . $product['image']);
+                }
+                echo 'Your product and its image have been deleted.';
+                header("refresh:3;url=/");
+
+            }
             break;
         default:
             echo 'what to do?';
@@ -65,7 +76,7 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role']='admin' && $_SERVER['RE
             break;
     }
 }
-if(isset($_SESSION['user']) && $_SESSION['user']['role']='admin' && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['id']) && isset($_GET['action'])) {
+if(isset($_SESSION['user']) && $_SESSION['user']['role']==='admin' && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['id']) && isset($_GET['action'])) {
     $cat_id = $product['cat_id']==$_POST['cat_id']?null:$productModel->sanitize($_POST['cat_id']);
     $name = $product['name']==$_POST['name']?null:$productModel->sanitize($_POST['name']);
     $price = $product['price']==$_POST['price']?null:($productModel->sanitize($_POST['price']));

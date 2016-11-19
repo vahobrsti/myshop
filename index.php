@@ -19,4 +19,5 @@ if(!isset($_SESSION['user'])) {
         echo '<a href="/Category/Show.php"> Manage Categories </a>';
     }
 }
+var_dump($_SESSION);
 require (ROOTFOLDER.'footer.php');

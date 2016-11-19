@@ -1,10 +1,14 @@
 <?php
 require_once __DIR__ . '/config.php';
 require_once (ROOTFOLDER.'header.php');
+//var_dump($_SESSION);die();
+?>
+    <a href="/Order/Orders.php?action=view">View your basket</a><br>
+<?php
 if(!isset($_SESSION['user'])) {
     ?>
     <a href="User/Login.php">Login Page</a><br>
-    <a href="User/Create.php">User Registration</a>
+    <a href="User/Create.php">User Registration</a><br>
 
     <?php
 }else{

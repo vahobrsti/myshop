@@ -4,6 +4,7 @@ require_once __DIR__.'/../config.php';
 //logout
 if(isset($_GET['action']) && $_GET['action']==='logout' && isset($_SESSION['user'])){
     unset($_SESSION['user']);
+    //var_dump($_SESSION);die();
     echo 'You have successfully logged out';
     header("refresh:3;url=/User/Login.php");
     exit();
@@ -30,10 +31,7 @@ if(isset($_GET['action']) && $_GET['action']==='logout' && isset($_SESSION['user
     if(isset($_SESSION['user'])){
     header("Location: /User/Show.php");
 }
-require_once __DIR__.'/../footer.php';
 ?>
-</body>
-</html>
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -63,4 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("refresh:3;url=/User/Login.php");
     }
 }
+require_once __DIR__.'/../footer.php';
 ?>
+</body>
+</html>

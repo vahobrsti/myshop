@@ -5,7 +5,7 @@ defined('ROOTFOLDER') or define('ROOTFOLDER',str_replace('\\','/',dirname(__FILE
 
 //database config
 defined('DBUSER') or define('DBUSER','root');
-defined('DBPASS') or define('DBPASS','');
+defined('DBPASS') or define('DBPASS','mysql');
 defined('DBHOST') or define('DBHOST','localhost');
 defined('DBNAME')or define('DBNAME','shop');
 function autoLoad($className){

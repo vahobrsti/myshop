@@ -9,4 +9,10 @@ class Category extends DB
         $total=$run->fetch_assoc()['total'];
         return ($total>=3);
     }
+    public function checkForThree(array $allcats){
+        if(! array_key_exists('id',$allcats) && count($allcats)>=3){
+            return true;
+        }
+        return false;
+    }
 }

@@ -21,11 +21,14 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role']==='admin' && $_SERVER['
         foreach ($allcats as $category) {
             echo 'Name: ';
             echo htmlentities($category['name']);
-            echo "<a href='/Category/Update.php?id=" . $category['id'] . "'> Update </a><br>";
+            echo "<a href='/Category/Update.php?id=" . htmlentities($category['id']) . "'> Update </a><br>";
         }
     }
     if(count($allcats)<3 || array_key_exists('id',$allcats)) {
         echo '<a href="Create.php">create</a>';
+    }
+    if(count($allcats)==3 && !array_key_exists('id',$allcats)){
+        echo '<br><a href="/Product/Create.php" style="color: green">Go and Create Your Products.</a>';
     }
         $catHandler->closeConnection();
 }

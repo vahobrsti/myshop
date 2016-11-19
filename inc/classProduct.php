@@ -6,7 +6,14 @@
  * Date: 14/11/16
  * Time: 10:26 PM
  */
-class Product
+class Product extends DB
 {
+    /**
+     * @return mysqli
+     */
+    public function getLastId()
+    {
+        return $this->connection->insert_id;
+    }
 
 }

@@ -5,7 +5,7 @@ require_once __DIR__.'/../config.php';
 if(isset($_GET['action']) && $_GET['action']==='logout' && isset($_SESSION['user'])){
     unset($_SESSION['user']);
     echo 'You have successfully logged out';
-    header("refresh:3;url=Login.php");
+    header("refresh:3;url=/User/Login.php");
     exit();
 }
 ?>
@@ -28,7 +28,7 @@ if(isset($_GET['action']) && $_GET['action']==='logout' && isset($_SESSION['user
     <p> if you dont have a user, please click <a href="Create.php">here</a> for registeration</p>
     <?php }
     if(isset($_SESSION['user'])){
-    header("Location: Show.php");
+    header("Location: /User/Show.php");
 }
 require_once __DIR__.'/../footer.php';
 ?>
@@ -51,16 +51,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $query="UPDATE `users` SET `last_login`=NOW() WHERE `id`={$userDB['id']}";
             $user->updateQuery($query);
             echo 'You have successfully logged in.Now you will redirect to your home page.';
-            header("refresh:3;url=Show.php");
+            header("refresh:3;url=/User/Show.php");
 
         }else{
             echo 'something went wrong ..... redirection to Login page';
-            header("refresh:3;url=Login.php");
+            header("refresh:3;url=/User/Login.php");
         }
 
     }else{
         echo 'You have not filled out the fileds correctly';
-        header("refresh:3;url=Login.php");
+        header("refresh:3;url=/User/Login.php");
     }
 }
 ?>

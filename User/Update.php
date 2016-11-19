@@ -43,12 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userDB=$user->readQuery($query);
             $_SESSION['user']=$userDB;
             echo 'You have successfully updated your account.';
-            header("refresh:3;url=" . HOST . "Show.php");
+            header("refresh:3;url=/User/Show.php");
         }
     }
     else{
         echo 'Password cannot be empty. Try again';
-        header("refresh:3;url=" . HOST . "Update.php?id=".$_SESSION['user']['id']);
+        header("refresh:3;url=/User/Update.php?id=".$_SESSION['user']['id']);
     }
 
 }

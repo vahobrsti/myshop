@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['user']['role']==='admin'
         }else{
             $productId=$productModel->getLastId();
             echo 'You have created your product successfully. Now Redirection to its page';
-            header("refresh:3;url=Show.php?id=".$productId);
+            header("refresh:3;url=/Product/Show.php?id=".$productId);
 
         };
     }

@@ -8,7 +8,7 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role']==='admin' && $_SERVER['
     $cat=$catHandler->readQuery($query);
     if(count($cat)==0 || !$cat){
         echo 'something went wrong. Try again';
-        header("refresh:3;url=Show.php");
+        header("refresh:3;url=/Category/Show.php");
         exit();
 
     }
@@ -40,7 +40,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['role']==='admin' && $_SERVER[
         echo 'Try again';
     }else{
         echo 'Update was successfull';
-        header("refresh:3;url=Show.php");
+        header("refresh:3;url=/Category/Show.php");
 
     }
 }

@@ -8,7 +8,7 @@ if(isset($_SESSION['user'])){
     echo 'Email: '.htmlentities($userLoggedIn['email']).'<br>';
     echo 'Last Login Date: '.htmlentities($userLoggedIn['last_login']).'<br>';
 }else{
-    header("Location: Login.php");
+    header("Location: /User/Login.php");
 }
 ?>
 <p>To update your details click the following link</p> <a href="/User/Update.php?id=<?php echo $userLoggedIn['id']?>">Update</a>

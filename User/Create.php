@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user->insertQuery($query)) {
             echo 'welcomee, Your registeration was successfull. Now you will be redirected to index page after 2 sec';
             $user->closeConnection();
-            header("refresh:3;url=" . HOST . "/index.php");
+            header("refresh:3;url=/");
         }
     }else{
         echo 'please pay attention to errors';

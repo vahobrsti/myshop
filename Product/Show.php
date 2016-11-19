@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id']) ){
         <a style="color: red;" href="<?php  echo 'Update.php?action=delete&id='.$product['id'] ?>" onclick="return confirm('Are You sure to delete this?')"><b>Delete</b></a><br>
 
     <?php endif;?>
-    <a href="Orders.php?action=add&id=<?php echo $product['id'] ?>">Add To basket</a>
+    <a href="Orders.php?action=add&id=<?php echo htmlentities($product['id']); ?>">Add To basket</a>
     <?php
 }
 require_once __DIR__.'/../footer.php';

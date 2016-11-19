@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__.'/../header.php';
 require_once __DIR__.'/../config.php';
+//var_dump($_SESSION);
 if(isset($_SESSION['user']) && $_SESSION['user']['role']==='admin') {
     $productModel = new Product();
     $product_id = $productModel->sanitize($_GET['id']);
@@ -12,10 +13,11 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role']==='admin') {
     $catModel = new Category();
     $query = "SELECT * FROM `categories`";
     $allCats = $catModel->readQuery($query);
-}
-if(! $catModel->checkForThree($allCats)){
-    echo 'Not enough categories. Must be three';
-    exit();
+
+    if (!$catModel->checkForThree($allCats)) {
+        echo 'Not enough categories. Must be three';
+        exit();
+    }
 }
 if(isset($_SESSION['user']) && $_SESSION['user']['role']==='admin' && $_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id']) && isset($_GET['action'])){
     $action=$_GET['action'];
@@ -112,10 +114,12 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role']==='admin' && $_SERVER['
        // var_dump($query);die();
         if(! $productModel->updateQuery($query)){
             echo $productModel->error;
-            header("refresh:3;url=Show.php?id=".$product['id']);
+            $productModel->closeConnection();
+            header("refresh:3;url=/Product/Show.php?id=".$product['id']);
         }else{
             echo "Update was successfull. Now redirection";
-            header("refresh:3;url=Show.php?id=".$product['id']);
+            $productModel->closeConnection();
+            header("refresh:3;url=/Product/Show.php?id=".$product['id']);
         }
     }
 

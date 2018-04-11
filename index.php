@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/config.php';
 require_once (ROOTFOLDER.'header.php');
-//var_dump($_SESSION);die();
+//this is a test to see var_dump($_SESSION);die();
 ?>
     <a href="/Order/Orders.php?action=view">View your basket</a><br>
 <?php
@@ -35,7 +35,7 @@ foreach ($allProducts as $product) {
     ?>
         <img height="200px" width="200px" src="/Public/Uploads/<?php echo $product['image'];?>" alt="<?php echo $product['name']?>">
         <p>Price: <?php echo $product['price'];?></p>
-        <p>Stock Number: <?php echo $product['stock'];?></p>
+        <p id="test">Stock Number: <?php echo $product['stock'];?></p>
         <p><a href="/Product/Show.php?id=<?php echo $product['id'];?>"> View details</a></p>
         <p><a href="/Order/Orders.php?action=add&id=<?php echo $product['id'];?>"> Add to basket</a></p>
         <?php if(isset($_SESSION['user']) && $_SESSION['user']['role']==='admin'){
@@ -51,3 +51,4 @@ foreach ($allProducts as $product) {
     <div style="clear: both"></div>
 <?php
 require 'footer.php';
+

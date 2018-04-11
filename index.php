@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/config.php';
 require_once (ROOTFOLDER.'header.php');
-//this is a test to see var_dump($_SESSION);die();
+//I made a change from outside. 
 ?>
     <a href="/Order/Orders.php?action=view">View your basket</a><br>
 <?php

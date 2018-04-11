@@ -1,4 +1,5 @@
 <?php
+// ok last test from BI repo
 require_once __DIR__ . '/config.php';
 require_once (ROOTFOLDER.'header.php');
 //I made a change from outside. 
